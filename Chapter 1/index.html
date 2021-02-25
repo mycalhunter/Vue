@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        /* .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+        } */        
+        li img {
+            width: 50px;
+            height: 100%;
+        }
+
+
+
+
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 10px;
+            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+        }
+        p, h3, ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-transform: capitalize;
+
+            /* use align-items and justify-content in conjunction with display:flex */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav {
+            background: #ff9ed2;
+            color: white;
+        }
+    </style>
+</head>
+    <body>
+
+        <div id="app">
+        <!--
+            <button v-on:click="age++">Increase Age</button>
+            <button v-on:click="age--">Decrease Age</button>
+
+            <div @click="changeTitle('Oathbringer')">Change Book Title</div>
+
+
+
+            <div v-if="showBooks">
+                <p>{{ title }} - {{ author }} - {{ age }}</p>
+            </div>
+            <button @click="toggleShowBooks">
+                <span v-if="showBooks">Hide Books</span>
+                <span v-else>Show Books</span>
+            </button>
+            <div v-show="showBooks">currently showing books</div>
+
+
+            <br>
+            <div class="box" @mouseover="handleEvent($event, 5)">mouseover (enter)</div>
+            <div class="box" @mouseleave="handleEvent">mouseleave (exit)</div>
+            <div class="box" @dblclick="handleEvent">double click</div>
+            <div class="box" @mousemove="handleMousemove">position - {{ x }} {{ y }}</div>
+       
+        -->
+        <div v-if="showBooks">
+            <ul>
+                <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                    <img :src="book.img" :alt="book.title">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author}}</p>
+                </li>
+
+                <li v-for="book in filteredBooks" :class="{ fav: book.isFav }">
+                    <img :src="book.img" :alt="book.title">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author}}</p>
+                </li>
+            </ul>
+        </div>
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+
+        <br>
+        <!-- attribute binding -->
+        <a :href="url">best website ever</a>
+
+
+
+        </div>        
+    <script src="app.js"></script>
+    </body>
+</html>
